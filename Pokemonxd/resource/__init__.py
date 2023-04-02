@@ -6,4 +6,3 @@ for filename in os.listdir("./Pokemonxd/resource"):
 
     if filename.endswith("png"):
 
-        thumbs.append(filename[:-4])
