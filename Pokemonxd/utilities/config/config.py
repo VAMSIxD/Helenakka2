@@ -90,7 +90,7 @@ LOG_FILE_NAME = "pokelogs.txt"
 
 
 # All Images Of poke Player // @Pokemonxd
-START_IMG_URL = getenv("START_IMG_URL", f"https://te.legra.ph/file/fc61ab189e509bade1463.jpg")
+START_IMG_URL = getenv("START_IMG_URL", f"https://te.legra.ph/file/d635adc3318e69dc7baa3.jpg")
 PING_IMG_URL = getenv("PING_IMG_URL", "Pokemonxd/resource/ping.jpeg")
 PLAYLIST_IMG_URL = getenv("PLAYLIST_IMG_URL", "Pokemonxd/resource/playlist.jpeg")
 GLOBAL_IMG_URL = getenv("GLOBAL_IMG_URL", "Pokemonxd/resource/global.jpeg")
