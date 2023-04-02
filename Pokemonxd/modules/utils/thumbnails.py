@@ -65,98 +65,90 @@ async def gen_thumb(videoid):
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
                 if resp.status == 200:
-                    f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
-                    await f.write(await resp.read())
-                    await f.close()
+                    f = await aiofiles.open("cache/thumbx.png", mode="wb")
+                await f.write(await resp.read())
+                await f.close()
 
-        a = Image.new('L', [640, 640], 0)
-        b = ImageDraw.Draw(a)
-        b.pieslice([(0, 0), (640,640)], 0, 360, fill = 255, outline = "white")
-        d = np.array(a)
-        e = np.dstack((c, d))
-        f = Image.fromarray(e)
-        x = f.resize((107, 107))
+    border = random.choice(colors)
+    image1 = Image.open("cache/thumbx.png")
+    image2 = Image.open(f"Pokemonxd/resource/amala.png")
+    image3 = changeImageSize(1280, 720, image1)
+    image4 = changeImageSize(1280, 720, image2)
+    image5 = image3.convert("RGBA")
+    image6 = image3.convert("RGBA")
+    background = image5.filter(filter=ImageFilter.BoxBlur(30))
+    enhancer = ImageEnhance.Brightness(background)
+    background = enhancer.enhance(0.6)
+    background.save("cache/blur_image.png")
 
-        border = random.choice(colors)
-        youtube = Image.open(f"cache/thumb{videoid}.png")
-        bg = Image.open(f"Pokemonxd/resource/amala.png")
-        image1 = changeImageSize(1280, 720, youtube)
-        image2 = image1.convert("RGBA")
-        background = image2.filter(filter=ImageFilter.BoxBlur(30))
-        enhancer = ImageEnhance.Brightness(background)
-        background = enhancer.enhance(0.6)
+    Xcenter = image3.width / 2
+    Ycenter = image3.height / 2
+    x1 = Xcenter - 250
+    y1 = Ycenter - 250
+    x2 = Xcenter + 250
+    y2 = Ycenter + 250
 
-        image3 = changeImageSize(1280, 720, bg)
-        image5 = image3.convert("RGBA")
-        Image.alpha_composite(background, image5).save(f"cache/temp{videoid}.png")
+    logo = image3.crop((x1, y1, x2, y2))
+    logo.thumbnail((520, 520), Image.ANTIALIAS)
+    logo.save(f"cache/temp.png")
+    if not os.path.isfile(f"cache/circle.png"):
+        im = Image.open(f"cache/temp.png").convert("RGBA")
+        add_corners(im)
+        im.save(f"cache/circle.png")
 
-        Xcenter = youtube.width / 2
-        Ycenter = youtube.height / 2
-        x1 = Xcenter - 250
-        y1 = Ycenter - 250
-        x2 = Xcenter + 250
-        y2 = Ycenter + 250
-        logo = youtube.crop((x1, y1, x2, y2))
-        logo.thumbnail((520, 520), Image.ANTIALIAS)
-        logo.save(f"cache/chop{videoid}.png")
-        if not os.path.isfile(f"cache/cropped{videoid}.png"):
-            im = Image.open(f"cache/chop{videoid}.png").convert("RGBA")
-            add_corners(im)
-            im.save(f"cache/cropped{videoid}.png")
+    image7 = Image.open(f"cache/circle.png")
+    image8 = image7.convert("RGBA")
+    image8.thumbnail((365, 365), Image.ANTIALIAS)
+    width = int((1280 - 365) / 2)
+    background = Image.open("cache/blur_image.png")
+    background.paste(image8, (width + 2, 138), mask=image8)
+    background.paste(image4, (0, 0), mask=image4)
+    img = ImageOps.expand(background, border=10, fill=f"{border}")
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("Pokemonxd/resource/font2.ttf", 45)
+    ImageFont.truetype("Pokemonxd/resource/font2.ttf", 70)
+    arial = ImageFont.truetype("Pokemonxd/resource/font2.ttf", 30)
+    ImageFont.truetype("resource/font.ttf", 30)
 
-        crop_img = Image.open(f"cache/cropped{videoid}.png")
-        logo = crop_img.convert("RGBA")
-        logo.thumbnail((365, 365), Image.ANTIALIAS)
-        width = int((1280 - 365) / 2)
-        background = Image.open(f"cache/temp{videoid}.png")
-        background.paste(logo, (width + 2, 138), mask=logo)
-        background.paste(x, (710, 427), mask=x)
-        background.paste(image3, (0, 0), mask=image3)
-        img = ImageOps.expand(background, border=10, fill=f"{border}")
-        draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("Pokemonxd/resource/font2.ttf", 45)
-        ImageFont.truetype("Pokemonxd/resource/font2.ttf", 70)
-        arial = ImageFont.truetype("Pokemonxd/resource/font2.ttf", 30)
-        ImageFont.truetype("Pokemonxd/resource/font.ttf", 30)
-        para = textwrap.wrap(title, width=32)
-        try:
+    para = textwrap.wrap(title, width=32)
+    try:
+        draw.text(
+            (450, 35),
+            f"STARTED PLAYING",
+            fill="white",
+            stroke_width=1,
+            stroke_fill="white",
+            font=font,
+        )
+        if para[0]:
+            text_w, text_h = draw.textsize(f"{para[0]}", font=font)
             draw.text(
-                (450, 35),
-                f"STARTED PLAYING",
+                ((1280 - text_w) / 2, 560),
+                f"{para[0]}",
                 fill="white",
                 stroke_width=1,
                 stroke_fill="white",
                 font=font,
             )
-            if para[0]:
-                text_w, text_h = draw.textsize(f"{para[0]}", font=font)
-                draw.text(
-                    ((1280 - text_w) / 2, 560),
-                    f"{para[0]}",
-                    fill="white",
-                    stroke_width=1,
-                    stroke_fill="white",
-                    font=font,
-                )
-            if para[1]:
-                text_w, text_h = draw.textsize(f"{para[1]}", font=font)
-                draw.text(
-                    ((1280 - text_w) / 2, 610),
-                    f"{para[1]}",
-                    fill="white",
-                    stroke_width=1,
-                    stroke_fill="white",
-                    font=font,
-                )
-        except:
-            pass
-        text_w, text_h = draw.textsize(f"Duration: {duration} Mins", font=arial)
-        draw.text(
-            ((1280 - text_w) / 2, 665),
-            f"Duration: {duration} Mins",
-            fill="white",
-            font=arial,
-        )
+        if para[1]:
+            text_w, text_h = draw.textsize(f"{para[1]}", font=font)
+            draw.text(
+                ((1280 - text_w) / 2, 610),
+                f"{para[1]}",
+                fill="white",
+                stroke_width=1,
+                stroke_fill="white",
+                font=font,
+            )
+    except:
+        pass
+    text_w, text_h = draw.textsize(f"Duration: {duration} Mins", font=arial)
+    draw.text(
+        ((1280 - text_w) / 2, 665),
+        f"Duration: {duration} Mins",
+        fill="white",
+        font=arial,
+    )
         try:
             os.remove(f"cache/thumb{videoid}.png")
         except:
