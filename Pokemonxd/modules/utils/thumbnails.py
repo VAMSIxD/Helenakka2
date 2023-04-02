@@ -69,7 +69,6 @@ async def gen_thumb(videoid):
                 await f.write(await resp.read())
                 await f.close()
 
-    border = random.choice(colors)
     image1 = Image.open("cache/thumbx.png")
     image2 = Image.open(f"Pokemonxd/resource/amala.png")
     image3 = changeImageSize(1280, 720, image1)
@@ -103,7 +102,6 @@ async def gen_thumb(videoid):
     background = Image.open("cache/blur_image.png")
     background.paste(image8, (width + 2, 138), mask=image8)
     background.paste(image4, (0, 0), mask=image4)
-    img = ImageOps.expand(background, border=10, fill=f"{border}")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("Pokemonxd/resource/font2.ttf", 45)
     ImageFont.truetype("Pokemonxd/resource/font2.ttf", 70)
