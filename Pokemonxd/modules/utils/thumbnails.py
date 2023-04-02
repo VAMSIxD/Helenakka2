@@ -13,7 +13,7 @@ from PIL import Image, ImageChops, ImageOps, ImageDraw, ImageEnhance, ImageFilte
 from youtubesearchpython.__future__ import VideosSearch
 
 from Pokemonxd.utilities.config import YOUTUBE_IMG_URL
-from Pokemonxd.resource import  colors
+from Pokemonxd.resource import thumbs, colors
 
 
 
