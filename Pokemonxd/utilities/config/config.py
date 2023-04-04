@@ -18,9 +18,9 @@ if os.path.exists("Internal"):
 # ╚╝╚╝╚══╝╚══╝─╚╝─╚══╝╚╝╚╝╚╝─╚═╝╚╝╚╝╚══╝╚═╝╚╩╝
 
 
-API_ID = int(getenv("API_ID", "11602131"))
-API_HASH = getenv("API_HASH", "44a478af25a14f5364b157fd136a0fa9")
-BOT_TOKEN = getenv("BOT_TOKEN", "5884257721:AAGLkFtxlrPewp5yKRPyjUAX4i7vloDvQv4")
+API_ID = int(getenv("API_ID", "27438953"))
+API_HASH = getenv("API_HASH", "e0edd380d158c193ef372fd57f91030c")
+BOT_TOKEN = getenv("BOT_TOKEN", "")
 MONGO_DB_URL = getenv("MONGO_DB_URL", "mongodb+srv://galaxina:galaxina@galaxina.ejvfqm7.mongodb.net/?retryWrites=true&w=majority")
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1200"))
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
