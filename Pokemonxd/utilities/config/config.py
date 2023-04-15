@@ -20,7 +20,7 @@ if os.path.exists("Internal"):
 
 API_ID = int(getenv("API_ID", "27438953"))
 API_HASH = getenv("API_HASH", "e0edd380d158c193ef372fd57f91030c")
-BOT_TOKEN = getenv("BOT_TOKEN", "5858201553:AAEm6hkQvAEDgaCTxDLOTI80bSlVmL6UdIY")
+BOT_TOKEN = getenv("BOT_TOKEN", "5858201553:AAGYt0F5bfaVHuJylu6JztvH62nGq9s32E8")
 MONGO_DB_URL = getenv("MONGO_DB_URL", "mongodb+srv://galaxina:galaxina@galaxina.ejvfqm7.mongodb.net/?retryWrites=true&w=majority")
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1200"))
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
@@ -56,7 +56,7 @@ TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", "1073741824"))
 
 # Pyrogram String Sessions (Multi-Client)
 
-STRING1 = getenv("STRING_SESSION", "BQBU6lkX1a8VY2P0IQarEX_49e2Kbma2yhSnPMC354LmfeTc4hHkv0CpjtKdtwp4B6YHyblHyt3TrfkDgDYhiUPgZgOXSX5_zl-d-CeAqxXB66nEAFXAVIjuiFs_mntIupiNysWdx1GuEPbZ9e7F97zqRZv3D7NJCEb8MoZTZOhCM88b-yCcmq9oX36OgDFUe7PiV6XO51VCuB_36rl3H6VMNyr5LqgVskmmYg0Bar9Yvvy6LsdxBmF6_hYp0mW9iwVzltJZH0qLnUBaL0L-2gJjq3vkghAhUv64FEuBzKIl02hDMg1z4hlcKVGSfrQlfCvxrNprgoNyzM63qgugZ-x0AAAAAWcUL44A")
+STRING1 = getenv("STRING_SESSION", "BQB3oiEWmoLBqw0A9e6CJdOWcd-l90gmuVOSllWidc2yaGgm9BfATTkVy0iDegcOlOMEgjkiUvHSQdkGXlfnbDByw1fyHgqU5zsK7uRLqYzAf2YUgrLdGYnNvKKgGZbqxJsVNKKelF-Bkt63PjGDJ-LbC_PHcJ4be1ATSbUTQNd6GZR3dPx9F4Kv7AC8V_yTt4gZgabHFw065Hl_r_53HAid-E3fF9EPxrufoM8A4oeKihCZEvZadZ4gBrn02hLfAludNzpSmP6TlvYbgZoB2HbcvKkrGv2lxw87GwSK3ldiMEgTMsvxzvdXzzA6zBX0WEFxOllaWVdEtOArvuPmva7uAAAAAWcUL44A")
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
