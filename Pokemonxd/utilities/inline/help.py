@@ -50,8 +50,8 @@ def help_pannel(_, START: Union[bool, int] = None):
             ],
             [
                 InlineKeyboardButton(
-                    text="𝐏𝐫𝐞𝐦𝐚 𝐕𝐞𝐧𝐧𝐞𝐥𝐚࿐",
-                    url=f"https://t.me/premavennela_143",
+                    text="𝐏𝐫𝐞𝐦𝐚 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥࿐",
+                    url=f"https://t.me/vennela_official143",
                 ),
             ],
             mark,
