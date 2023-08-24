@@ -25,7 +25,7 @@ def help_pannel(_, START: Union[bool, int] = None):
             [   
                 InlineKeyboardButton(
                     text="𝐒𝐮𝐩𝐩𝐨𝐫𝐭࿐",
-                    url=f"https://t.me/Telugu_Friends_Chatting",
+                    url=f"https://t.me/TeluguWorldChattingGroupt",
                 ),
             ],
             [
@@ -50,8 +50,8 @@ def help_pannel(_, START: Union[bool, int] = None):
             ],
             [
                 InlineKeyboardButton(
-                    text="𝐏𝐫𝐞𝐦𝐚 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥࿐",
-                    url=f"https://t.me/vennela_official143",
+                    text="𝐎𝐇 𝐌𝐘 𝐋𝐎𝐕𝐄",
+                    url=f"https://t.me/Oh_my_Luvv",
                 ),
             ],
             mark,
