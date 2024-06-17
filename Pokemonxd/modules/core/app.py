@@ -11,7 +11,6 @@ assistantids = []
 
 class App:
     def __init__(self):
-        # Use shorter session names
         self.one = Client(
             "assistant_1",
             api_id=config.API_ID,
@@ -94,8 +93,9 @@ class App:
                 f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 {index} 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {client.name} ✨..."
             )
 
-# Initialize and start the App
-app = App()
-asyncio.run(app.start_all())
-
-                                  
+# Ensure an event loop is available
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    app = App()
+    loop.run_until_complete(app.start_all())
+    
