@@ -5,16 +5,11 @@ from datetime import datetime, timedelta
 from typing import Union
 
 from pyrogram import Client
-from pyrogram.errors import (ChatAdminRequired,
-                             UserAlreadyParticipant,
-                             UserNotParticipant)
+from pyrogram.errors import ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup
 from pytgcalls import PyTgCalls, StreamType
-from pytgcalls.exceptions import (AlreadyJoinedError,
-                                  NoActiveGroupCall,
-                                  TelegramServerError)
-from pytgcalls.types import (JoinedGroupCallParticipant,
-                             LeftGroupCallParticipant, Update)
+from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall, TelegramServerError
+from pytgcalls.types import JoinedGroupCallParticipant, LeftGroupCallParticipant, Update
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
 from pytgcalls.types.stream import StreamAudioEnded
 
@@ -22,81 +17,74 @@ from Pokemonxd import LOGGER, YouTube, bot
 from Pokemonxd.misc import db
 from Pokemonxd.utilities import config
 from Pokemonxd.utilities.strings import get_string
-from Pokemonxd.modules.database import (add_active_chat,
-                                             add_active_video_chat,
-                                             get_assistant,
-                                             get_audio_bitrate, get_lang,
-                                             get_loop, get_video_bitrate,
-                                             group_assistant, is_autoend,
-                                             music_on, mute_off,
-                                             remove_active_chat,
-                                             remove_active_video_chat,
-                                             set_loop)
+from Pokemonxd.modules.database import (add_active_chat, add_active_video_chat, get_assistant,
+                                        get_audio_bitrate, get_lang, get_loop, get_video_bitrate,
+                                        group_assistant, is_autoend, music_on, mute_off,
+                                        remove_active_chat, remove_active_video_chat, set_loop)
 from Pokemonxd.modules.stream.autoclear import auto_clean
 from Pokemonxd.modules.utils.exceptions import AssistantErr
-from Pokemonxd.utilities.inline.play import (stream_markup,
-                                              telegram_markup)
-
+from Pokemonxd.utilities.inline.play import stream_markup, telegram_markup
 from Pokemonxd.modules.utils.thumbnails import gen_thumb
 
 autoend = {}
 counter = {}
 AUTO_END_TIME = 3
 
-
 async def _clear_(chat_id):
     db[chat_id] = []
     await remove_active_video_chat(chat_id)
     await remove_active_chat(chat_id)
 
-
 class Call(PyTgCalls):
     def __init__(self):
         self.app1 = Client(
+            name=str(config.STRING1),
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING1),
         )
         self.one = PyTgCalls(
             self.app1,
             cache_duration=100,
         )
         self.app2 = Client(
+            name=str(config.STRING2),
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING2),
         )
         self.two = PyTgCalls(
             self.app2,
             cache_duration=100,
         )
         self.app3 = Client(
+            name=str(config.STRING3),
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING3),
         )
         self.three = PyTgCalls(
             self.app3,
             cache_duration=100,
         )
         self.app4 = Client(
+            name=str(config.STRING4),
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING4),
         )
         self.four = PyTgCalls(
             self.app4,
             cache_duration=100,
         )
         self.app5 = Client(
+            name=str(config.STRING5),
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING5),
         )
         self.five = PyTgCalls(
             self.app5,
             cache_duration=100,
         )
+
+    # ... rest of your methods remain unchanged ...
+
 
     async def pause_stream(self, chat_id: int):
         assistant = await group_assistant(self, chat_id)
