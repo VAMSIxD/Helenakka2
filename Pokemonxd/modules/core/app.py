@@ -8,38 +8,43 @@ from Pokemonxd.console import LOGGER
 assistants = []
 assistantids = []
 
-class App(Client):
+class App:
     def __init__(self):
-        # Initialize each Client with the session name as the first argument
+        # Use shorter session names
         self.one = Client(
-            str(config.STRING1),
+            "assistant_1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             no_updates=True,
+            session_string=config.STRING1
         )
         self.two = Client(
-            str(config.STRING2),
+            "assistant_2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             no_updates=True,
+            session_string=config.STRING2
         )
         self.three = Client(
-            str(config.STRING3),
+            "assistant_3",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             no_updates=True,
+            session_string=config.STRING3
         )
         self.four = Client(
-            str(config.STRING4),
+            "assistant_4",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             no_updates=True,
+            session_string=config.STRING4
         )
         self.five = Client(
-            str(config.STRING5),
+            "assistant_5",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             no_updates=True,
+            session_string=config.STRING5
         )
 
     async def start_all(self):
