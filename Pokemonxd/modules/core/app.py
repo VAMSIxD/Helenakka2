@@ -1,6 +1,7 @@
 # Aditya Halder
 
 import sys
+import asyncio
 from pyrogram import Client
 from Pokemonxd.utilities import config
 from Pokemonxd.console import LOGGER
@@ -95,4 +96,6 @@ class App:
 
 # Initialize and start the App
 app = App()
-app.run(app.start_all())
+asyncio.run(app.start_all())
+
+                                  
