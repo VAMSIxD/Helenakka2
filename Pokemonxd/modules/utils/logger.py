@@ -29,10 +29,10 @@ async def play_logs(message, streamtype):
 **━━━━━━━━━━━━━━━━━━━**
 **🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**
 **━━━━━━━━━━━━━━━━━━━**"""
-        if message.chat.id != LOG_GROUP_ID:
+        if message.chat.id != -1002177773864:
             try:
                 await bot.send_message(
-                    LOG_GROUP_ID,
+                    -1002177773864,
                     f"{logger_text}",
                     disable_web_page_preview=True,
                 )
