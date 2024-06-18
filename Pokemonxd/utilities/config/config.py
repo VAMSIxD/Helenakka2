@@ -24,7 +24,7 @@ BOT_TOKEN = getenv("BOT_TOKEN", "7318206950:AAFkMSu8et0wIaLopdLzSQk1t-Dprk6iGw0"
 MONGO_DB_URL = getenv("MONGO_DB_URL", "mongodb+srv://developervro:developerrapuka@cluster9.gcj9754.mongodb.net/?retryWrites=true&w=majority&appName=Cluster9")
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1200"))
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1001553204990"))
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1002178056801"))
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/").split())
 MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "GARIMA MUSICX")
 OWNER_ID = list(map(int, getenv("OWNER_ID", "6708929009").split()))
