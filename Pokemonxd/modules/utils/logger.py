@@ -5,14 +5,9 @@ from Pokemonxd.utilities.config import LOG, LOG_GROUP_ID
 
 async def play_logs(message, streamtype):
     if await is_on_off(LOG):
-        if message.chat.username:
-            chatusername = f"@{message.chat.username}"
-        else:
-            chatusername = "Private Chat"
-        if message.from_user.username:
-            user_name = f"@{message.from_user.username}"
-        else:
-            user_name = f"{message.from_user.mention}"
+        chatusername = f"@{message.chat.username}" if message.chat.username else "Private Chat"
+        user_name = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.mention}"
+        
         logger_text = f"""
 **━━━━━━━━━━━━━━━━━━━**
 **🤖 𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫 : 𝐒𝐦𝐚𝐫𝐭 𝐋𝐨𝐠𝐬.**
@@ -29,13 +24,16 @@ async def play_logs(message, streamtype):
 **━━━━━━━━━━━━━━━━━━━**
 **🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**
 **━━━━━━━━━━━━━━━━━━━**"""
-        if message.chat.id != -1002177773864:
+
+        if message.chat.id != LOG_GROUP_ID:
             try:
                 await bot.send_message(
-                    -1002177773864,
-                    f"{logger_text}",
+                    LOG_GROUP_ID,
+                    logger_text,
                     disable_web_page_preview=True,
                 )
-            except:
-                pass
+            except Exception as e:
+                # Handle logging error if needed
+                print(f"Error sending log message: {e}")
         return
+        
